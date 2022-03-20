@@ -1,0 +1,305 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Player/Run/run_4.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Player/Attack/attack1_4.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Player/Jump/jump_5.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Player/Run/run_1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Player/Jump/jump_2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Player/Jump/jump_1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Player/Attack/attack1_1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Player/Attack/attack1_5.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Player/Attack/attack1_6.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Player/Run/run_6.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Player/Attack/attack1_3.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Player/Jump/jump_4.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Player/Run/run_3.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Player/Jump/jump_3.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Player/Attack/attack1_2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Player/Ready/ready_1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/Player/Ready/ready_2.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/Player/Ready/ready_3.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/Player/Run/run_5.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Player/Run/run_2.png" type="Texture" id=21]
+[ext_resource path="res://Musics/xDeviruchi - Title Theme .wav" type="AudioStream" id=22]
+[ext_resource path="res://Scene/Settings.gd" type="Script" id=23]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 21 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 20 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+} ]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.054902, 0.0627451, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -76.0
+margin_right = 73.0
+rect_pivot_offset = Vector2( -400, -116 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartBtn" type="Button" parent="VBoxContainer"]
+margin_right = 63.0
+margin_bottom = 21.0
+focus_neighbour_top = NodePath("../ExitBtn")
+text = "Start"
+
+[node name="OptionsBtn" type="Button" parent="VBoxContainer"]
+margin_top = 25.0
+margin_right = 63.0
+margin_bottom = 46.0
+text = "Options"
+
+[node name="ExitBtn" type="Button" parent="VBoxContainer"]
+margin_top = 50.0
+margin_right = 63.0
+margin_bottom = 71.0
+focus_neighbour_bottom = NodePath("../StartBtn")
+text = "Exit"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 280, 131 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -26.5
+margin_top = 20.0
+margin_right = 26.5
+margin_bottom = 35.0
+text = "Slayman"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsMenu" type="Popup" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="SettingsMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.054902, 0.0627451, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SettingsMenu"]
+anchor_right = 1.0
+margin_top = 20.0
+margin_bottom = 14.0
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReturnBtn" type="Button" parent="SettingsMenu"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 12.0
+margin_bottom = 20.0
+focus_neighbour_bottom = NodePath("../VBoxContainer/ButtonsContainer/VideoBtn")
+text = "Retour"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.5
+margin_top = -59.0
+margin_right = 87.5
+margin_bottom = 59.0
+rect_min_size = Vector2( 175, 18 )
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="SettingsMenu/VBoxContainer"]
+margin_left = 5.0
+margin_right = 169.0
+margin_bottom = 21.0
+size_flags_horizontal = 4
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoBtn" type="Button" parent="SettingsMenu/VBoxContainer/ButtonsContainer"]
+margin_right = 46.0
+margin_bottom = 21.0
+focus_neighbour_left = NodePath("../ControlBtn")
+focus_neighbour_top = NodePath("../../../ReturnBtn")
+focus_neighbour_bottom = NodePath("../../VideoSettings/VSyncCheckbox")
+text = "Video"
+
+[node name="AudioBtn" type="Button" parent="SettingsMenu/VBoxContainer/ButtonsContainer"]
+margin_left = 50.0
+margin_right = 98.0
+margin_bottom = 21.0
+focus_neighbour_top = NodePath("../../../ReturnBtn")
+focus_neighbour_bottom = NodePath("../../VideoSettings/VSyncCheckbox")
+text = "Audio"
+
+[node name="ControlBtn" type="Button" parent="SettingsMenu/VBoxContainer/ButtonsContainer"]
+margin_left = 102.0
+margin_right = 164.0
+margin_bottom = 21.0
+focus_neighbour_top = NodePath("../../../ReturnBtn")
+focus_neighbour_right = NodePath("../VideoBtn")
+focus_neighbour_bottom = NodePath("../../VideoSettings/VSyncCheckbox")
+text = "Controls"
+
+[node name="VideoSettings" type="GridContainer" parent="SettingsMenu/VBoxContainer"]
+margin_top = 31.0
+margin_right = 175.0
+margin_bottom = 84.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 85
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSyncLabel" type="Label" parent="SettingsMenu/VBoxContainer/VideoSettings"]
+margin_top = 4.0
+margin_right = 64.0
+margin_bottom = 19.0
+text = "VSync"
+
+[node name="VSyncCheckbox" type="CheckBox" parent="SettingsMenu/VBoxContainer/VideoSettings"]
+margin_left = 149.0
+margin_right = 173.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenLabel" type="Label" parent="SettingsMenu/VBoxContainer/VideoSettings"]
+margin_top = 33.0
+margin_right = 64.0
+margin_bottom = 48.0
+text = "Fullscreen"
+
+[node name="FullScreenCheckbox" type="CheckBox" parent="SettingsMenu/VBoxContainer/VideoSettings"]
+margin_left = 149.0
+margin_top = 29.0
+margin_right = 173.0
+margin_bottom = 53.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioSettings" type="GridContainer" parent="SettingsMenu/VBoxContainer"]
+visible = false
+margin_top = 98.0
+margin_right = 175.0
+margin_bottom = 114.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 85
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLabel" type="Label" parent="SettingsMenu/VBoxContainer/AudioSettings"]
+margin_right = 35.0
+margin_bottom = 15.0
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/AudioSettings"]
+margin_left = 120.0
+margin_right = 170.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 50, 0 )
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsSettings" type="GridContainer" parent="SettingsMenu/VBoxContainer"]
+visible = false
+margin_top = 120.0
+margin_right = 175.0
+margin_bottom = 120.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 85
+columns = 2
+
+[node name="UpLabel" type="Label" parent="SettingsMenu/VBoxContainer/ControlsSettings"]
+margin_right = 40.0
+margin_bottom = 15.0
+text = "UP"
+
+[node name="Button" type="Button" parent="SettingsMenu/VBoxContainer/ControlsSettings"]
+margin_right = 12.0
+margin_bottom = 21.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/StartBtn" to="." method="_on_StartBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="SettingsMenu/ReturnBtn" to="." method="_on_ReturnBtn_pressed"]
+[connection signal="pressed" from="SettingsMenu/VBoxContainer/ButtonsContainer/VideoBtn" to="." method="_on_VideoBtn_pressed"]
+[connection signal="pressed" from="SettingsMenu/VBoxContainer/ButtonsContainer/AudioBtn" to="." method="_on_AudioBtn_pressed"]
+[connection signal="pressed" from="SettingsMenu/VBoxContainer/ButtonsContainer/ControlBtn" to="." method="_on_ControlBtn3_pressed"]
+[connection signal="toggled" from="SettingsMenu/VBoxContainer/VideoSettings/VSyncCheckbox" to="SettingsMenu" method="_on_VSyncCheckbox_toggled"]
+[connection signal="toggled" from="SettingsMenu/VBoxContainer/VideoSettings/FullScreenCheckbox" to="SettingsMenu" method="_on_FullScreenCheckbox_toggled"]

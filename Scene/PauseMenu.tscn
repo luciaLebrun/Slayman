@@ -1,0 +1,162 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=1]
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -300, -185 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeBtn" type="Button" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 59.0
+margin_bottom = 26.0
+focus_neighbour_bottom = NodePath("../VBoxContainer/HBoxContainer/VideoBtn")
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitBtn" type="Button" parent="."]
+margin_left = 70.0
+margin_top = 5.0
+margin_right = 37.0
+margin_bottom = 21.0
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.5
+margin_top = -59.0
+margin_right = 87.5
+margin_bottom = 59.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_left = 5.0
+margin_top = 17.0
+margin_right = 169.0
+margin_bottom = 38.0
+size_flags_horizontal = 4
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 46.0
+margin_bottom = 21.0
+focus_neighbour_left = NodePath("../ControlBtn")
+focus_neighbour_top = NodePath("../../../ResumeBtn")
+focus_neighbour_bottom = NodePath("../../SettingsContainer/VideoSettings/VSyncCheckbox")
+text = "Video"
+
+[node name="AudioBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 50.0
+margin_right = 98.0
+margin_bottom = 21.0
+focus_neighbour_top = NodePath("../../../ResumeBtn")
+focus_neighbour_bottom = NodePath("../../SettingsContainer/VideoSettings/VSyncCheckbox")
+text = "Audio"
+
+[node name="ControlBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 102.0
+margin_right = 164.0
+margin_bottom = 21.0
+focus_neighbour_top = NodePath("../../../ResumeBtn")
+focus_neighbour_right = NodePath("../VideoBtn")
+focus_neighbour_bottom = NodePath("../../SettingsContainer/VideoSettings/VSyncCheckbox")
+text = "Controls"
+
+[node name="SettingsContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 175.0
+margin_bottom = 101.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoSettings" type="GridContainer" parent="VBoxContainer/SettingsContainer"]
+margin_left = 1.0
+margin_right = 174.0
+margin_bottom = 53.0
+size_flags_horizontal = 4
+custom_constants/vseparation = 5
+custom_constants/hseparation = 85
+columns = 2
+
+[node name="VSyncLabel" type="Label" parent="VBoxContainer/SettingsContainer/VideoSettings"]
+margin_top = 4.0
+margin_right = 64.0
+margin_bottom = 19.0
+text = "VSync"
+
+[node name="VSyncCheckbox" type="CheckBox" parent="VBoxContainer/SettingsContainer/VideoSettings"]
+margin_left = 149.0
+margin_right = 173.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenLabel" type="Label" parent="VBoxContainer/SettingsContainer/VideoSettings"]
+margin_top = 33.0
+margin_right = 64.0
+margin_bottom = 48.0
+text = "Fullscreen"
+
+[node name="FullScreenCheckbox" type="CheckBox" parent="VBoxContainer/SettingsContainer/VideoSettings"]
+margin_left = 149.0
+margin_top = 29.0
+margin_right = 173.0
+margin_bottom = 53.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioSettings" type="GridContainer" parent="VBoxContainer/SettingsContainer"]
+visible = false
+margin_top = 64.0
+margin_right = 66.0
+margin_bottom = 64.0
+
+[node name="ControlsSettings" type="GridContainer" parent="VBoxContainer/SettingsContainer"]
+visible = false
+margin_top = 68.0
+margin_right = 66.0
+margin_bottom = 68.0
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 15.0
+text = "Pause"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="pressed" from="QuitBtn" to="." method="_on_QuitBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VideoBtn" to="." method="_on_VideoBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AudioBtn" to="." method="_on_AudioBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ControlBtn" to="." method="_on_ControlBtn_pressed"]
